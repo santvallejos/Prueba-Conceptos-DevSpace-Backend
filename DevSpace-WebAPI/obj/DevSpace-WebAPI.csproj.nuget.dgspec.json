@@ -1,31 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Santi\\Desktop\\Projects\\DevSpace\\DevSpace\\DevSpace-WebAPI\\DevSpace-WebAPI.csproj": {}
+    "/Users/soficubilla/Documents/Projects/Dotnet/DevSpace-Backend/DevSpace-WebAPI/DevSpace-WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Santi\\Desktop\\Projects\\DevSpace\\DevSpace\\DevSpace-WebAPI\\DevSpace-WebAPI.csproj": {
+    "/Users/soficubilla/Documents/Projects/Dotnet/DevSpace-Backend/DevSpace-WebAPI/DevSpace-WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Santi\\Desktop\\Projects\\DevSpace\\DevSpace\\DevSpace-WebAPI\\DevSpace-WebAPI.csproj",
+        "projectUniqueName": "/Users/soficubilla/Documents/Projects/Dotnet/DevSpace-Backend/DevSpace-WebAPI/DevSpace-WebAPI.csproj",
         "projectName": "DevSpace-WebAPI",
-        "projectPath": "C:\\Users\\Santi\\Desktop\\Projects\\DevSpace\\DevSpace\\DevSpace-WebAPI\\DevSpace-WebAPI.csproj",
-        "packagesPath": "C:\\Users\\Santi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Santi\\Desktop\\Projects\\DevSpace\\DevSpace\\DevSpace-WebAPI\\obj\\",
+        "projectPath": "/Users/soficubilla/Documents/Projects/Dotnet/DevSpace-Backend/DevSpace-WebAPI/DevSpace-WebAPI.csproj",
+        "packagesPath": "/Users/soficubilla/.nuget/packages/",
+        "outputPath": "/Users/soficubilla/Documents/Projects/Dotnet/DevSpace-Backend/DevSpace-WebAPI/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Santi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/soficubilla/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -74,7 +69,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.103/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
