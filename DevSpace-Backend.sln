@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DevSpace-BusinessLayer", "DevSpace-BusinessLayer", "{ECB1F850-5F18-4C11-B588-C8A9CD878797}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DevSpace", "DevSpace", "{ECB1F850-5F18-4C11-B588-C8A9CD878797}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevSpace-BusinessLayer", "DevSpace-BusinessLayer\DevSpace-BusinessLayer.csproj", "{9CFA9BFC-7460-40BF-B00E-443D4FED6EBB}"
 EndProject

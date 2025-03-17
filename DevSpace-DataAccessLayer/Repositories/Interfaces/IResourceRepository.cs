@@ -6,7 +6,7 @@ using DevSpace_DataAccessLayer.Models.Resource;
 
 namespace DevSpace_DataAccessLayer.Repositories.Interfaces.IResourceCollection
 {
-    interface IResourceCollection
+    public interface IResourceCollection
     {
         Task AddResource( Resource resource );
         Task UpdateResource( Resource resource );

@@ -1,0 +1,12 @@
+C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-BusinessLayer\bin\Debug\net9.0\DevSpace-BusinessLayer.deps.json
+C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-BusinessLayer\bin\Debug\net9.0\DevSpace-BusinessLayer.dll
+C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-BusinessLayer\bin\Debug\net9.0\DevSpace-BusinessLayer.pdb
+C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-BusinessLayer\obj\Debug\net9.0\DevSpace-BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-BusinessLayer\obj\Debug\net9.0\DevSpace-BusinessLayer.AssemblyInfoInputs.cache
+C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-BusinessLayer\obj\Debug\net9.0\DevSpace-BusinessLayer.AssemblyInfo.cs
+C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-BusinessLayer\obj\Debug\net9.0\DevSpace-BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-BusinessLayer\obj\Debug\net9.0\DevSpace-BusinessLayer.sourcelink.json
+C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-BusinessLayer\obj\Debug\net9.0\DevSpace-BusinessLayer.dll
+C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-BusinessLayer\obj\Debug\net9.0\refint\DevSpace-BusinessLayer.dll
+C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-BusinessLayer\obj\Debug\net9.0\DevSpace-BusinessLayer.pdb
+C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-BusinessLayer\obj\Debug\net9.0\ref\DevSpace-BusinessLayer.dll

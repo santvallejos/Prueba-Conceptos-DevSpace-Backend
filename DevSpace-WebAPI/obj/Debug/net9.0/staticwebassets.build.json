@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "4S0/IWJ2zfrFEmLPsAyTyeW4ZmMJEjvfvFN/qZLgA1s=",
+  "Source": "DevSpace-WebAPI",
+  "BasePath": "_content/DevSpace-WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
