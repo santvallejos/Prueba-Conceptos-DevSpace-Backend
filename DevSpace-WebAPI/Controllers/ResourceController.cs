@@ -1,9 +1,9 @@
-using DevSpace_DataAccessLayer.Models.Resource;
-using DevSpace_DataAccessLayer.Repositories.Interfaces.IResourceCollection;
+using DevSpace_DataAccessLayer.Models;
+using DevSpace_DataAccessLayer.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DevSpace_WebAPI.Controllers.ResourceController
+namespace DevSpace_WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,6 +16,7 @@ namespace DevSpace_WebAPI.Controllers.ResourceController
             _resourceCollection = resourceCollection;
         }
 
+        [HttpGet]
         public async Task<IActionResult> GetResources()
         {
             return Ok(await _resourceCollection.GetResources());

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace DevSpace_DataAccessLayer.Models.Resource
+namespace DevSpace_DataAccessLayer.Models
 {
     public class Resource
     {

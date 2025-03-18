@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DevSpace_DataAccessLayer.Models.Resource;
+using DevSpace_DataAccessLayer.Models;
 
-namespace DevSpace_DataAccessLayer.Repositories.Interfaces.IResourceCollection
+namespace DevSpace_DataAccessLayer.Repositories.Interfaces
 {
     public interface IResourceCollection
     {

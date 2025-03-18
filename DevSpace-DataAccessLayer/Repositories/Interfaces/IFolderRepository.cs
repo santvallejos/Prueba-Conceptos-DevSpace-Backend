@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DevSpace_DataAccessLayer.Models.Folder;
+using DevSpace_DataAccessLayer.Models;
 
-namespace DevSpace_DataAccessLayer.Repositories.Interfaces.IFolderCollection
+namespace DevSpace_DataAccessLayer.Repositories.Interfaces
 {
     public interface IFolderCollection
     {

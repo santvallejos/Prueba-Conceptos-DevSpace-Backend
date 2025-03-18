@@ -1,9 +1,9 @@
-﻿using DevSpace_DataAccessLayer.Models.Folder;
-using DevSpace_DataAccessLayer.Repositories.Interfaces.IFolderCollection;
+﻿using DevSpace_DataAccessLayer.Models;
+using DevSpace_DataAccessLayer.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DevSpace_WebAPI.Controllers.FolderController
+namespace DevSpace_WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,6 +16,7 @@ namespace DevSpace_WebAPI.Controllers.FolderController
             _folderCollection = folderCollection;
         }
 
+        [HttpGet]
         public async Task<IActionResult> GetFolders()
         {
             return Ok(await _folderCollection.GetFolders());

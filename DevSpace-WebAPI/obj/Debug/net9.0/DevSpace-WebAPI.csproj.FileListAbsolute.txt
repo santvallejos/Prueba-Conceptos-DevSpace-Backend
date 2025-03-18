@@ -49,4 +49,7 @@ C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-WebAPI\obj\De
 C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-WebAPI\obj\Debug\net9.0\DevSpace-WebAPI.pdb
 C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-WebAPI\obj\Debug\net9.0\DevSpace-WebAPI.genruntimeconfig.cache
 C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-WebAPI\obj\Debug\net9.0\ref\DevSpace-WebAPI.dll
-C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-WebAPI\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-WebAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-WebAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-WebAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Santi\Desktop\Projects\DevSpace\DevSpace-Backend\DevSpace-WebAPI\obj\Debug\net9.0\DevSpace-WebAPI.MvcApplicationPartsAssemblyInfo.cs

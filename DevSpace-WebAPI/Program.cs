@@ -1,13 +1,13 @@
-using DevSpace_DataAccessLayer.Models.Folder;
-using DevSpace_DataAccessLayer.Repositories.Collection.FolderCollection;
-using DevSpace_DataAccessLayer.Repositories.Collection.ResourceCollection;
-using DevSpace_DataAccessLayer.Repositories.Interfaces.IFolderCollection;
-using DevSpace_DataAccessLayer.Repositories.Interfaces.IResourceCollection;
+using DevSpace_DataAccessLayer.Models;
+using DevSpace_DataAccessLayer.Repositories.Collection;
+using DevSpace_DataAccessLayer.Repositories.Interfaces;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSwaggerGen();
 
 //Configuracion de MongoDB
 builder.Services.AddSingleton<IMongoClient>(new MongoClient("mongodb://localhost:27017/DevSpace"));
@@ -18,15 +18,24 @@ builder.Services.AddScoped<IFolderCollection, FolderCollection>();
 builder.Services.AddScoped<IResourceCollection, ResourceCollection>();
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+
+//Configuration CORS
+builder.Services.AddCors(options => {
+    options.AddPolicy("AllowLocalhost4200", policy => {
+        policy.WithOrigins("http://localhost:5173") 
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin();
+    });
+});
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

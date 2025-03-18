@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using DevSpace_DataAccessLayer.Models.Resource;
+using DevSpace_DataAccessLayer.Models;
 
-namespace DevSpace_DataAccessLayer.Models.Folder
+namespace DevSpace_DataAccessLayer.Models
 {
     public class Folder
     {
