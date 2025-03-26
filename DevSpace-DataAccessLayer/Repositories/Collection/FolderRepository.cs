@@ -31,10 +31,23 @@ namespace DevSpace_DataAccessLayer.Repositories.Collection
             var filter = Builders<Folder>.Filter.Eq("_id", new ObjectId(id));
             return await Collection.FindAsync(filter).Result.FirstOrDefaultAsync();
         }
+        //[Get]
+        public async Task<List<string>> GetSubFolders( string id )
+        {
+            var filter = Builders<Folder>.Filter.Eq("_id", new ObjectId(id));
+            return (await Collection.FindAsync(filter).Result.FirstOrDefaultAsync()).SubFolders;
+        }
         //[Post]
         public async Task AddFolder( Folder folder )
         {
             await Collection.InsertOneAsync( folder );
+
+            if(!string.IsNullOrEmpty(folder.ParentFolderID))
+            {
+                var filter = Builders<Folder>.Filter.Eq("_id", new ObjectId(folder.ParentFolderID));
+                var update = Builders<Folder>.Update.Push("SubFolders", folder.Id);
+                await Collection.UpdateOneAsync(filter, update);
+            }
         }
         //[Put]
         public async Task UpdateFolder( Folder folder )

@@ -8,10 +8,11 @@ namespace DevSpace_DataAccessLayer.Repositories.Interfaces
 {
     public interface IFolderCollection
     {
+        Task<List<Folder>> GetFolders();
+        Task<Folder> GetFolderById( string id );
+        Task<List<string>> GetSubFolders( string id );
         Task AddFolder( Folder folder );
         Task UpdateFolder( Folder folder );
         Task DeleteFolder( string id );
-        Task<List<Folder>> GetFolders();
-        Task<Folder> GetFolderById( string id );
     }
 }

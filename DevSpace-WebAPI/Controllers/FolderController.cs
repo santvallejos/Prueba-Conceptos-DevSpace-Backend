@@ -28,6 +28,12 @@ namespace DevSpace_WebAPI.Controllers
             return Ok(await _folderCollection.GetFolderById(id));
         }
 
+        [HttpGet("SubFolders/{id}")]
+        public async Task<IActionResult> GetSubFolders(string id)
+        {
+            return Ok(await _folderCollection.GetSubFolders(id));
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddFolder([FromBody] Folder folder)
         {

@@ -8,10 +8,10 @@ namespace DevSpace_DataAccessLayer.Repositories.Interfaces
 {
     public interface IResourceCollection
     {
+        Task<List<Resource>> GetResources();
+        Task<Resource> GetResourceById( string id );
         Task AddResource( Resource resource );
         Task UpdateResource( Resource resource );
         Task DeleteResource( string id );
-        Task<List<Resource>> GetResources();
-        Task<Resource> GetResourceById( string id );
     }
 }

@@ -15,6 +15,6 @@ namespace DevSpace_DataAccessLayer.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string? ParentFolderID { get; set; }
-        public List<Folder> SubFolder { get; set; } = new List<Folder>();
+        public List<string> SubFolders { get; set; } = new List<string>();
     }
 }
