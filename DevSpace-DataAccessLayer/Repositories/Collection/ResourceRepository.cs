@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using DevSpace_DataAccessLayer.Models;
 using DevSpace_DataAccessLayer.Repositories.Interfaces;
 using MongoDB.Driver;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace DevSpace_DataAccessLayer.Repositories.Collection
 {
@@ -19,29 +21,32 @@ namespace DevSpace_DataAccessLayer.Repositories.Collection
         }
 
         //[Get]
-        public Task<List<Resource>> GetResources()
+        public async Task<List<Resource>> GetResources()
         {
-            throw new NotImplementedException();
+            return await Collection.FindAsync(new BsonDocument()).Result.ToListAsync();
         }
         //[Get]
-        public Task<Resource> GetResourceById( string id )
+        public async Task<Resource> GetResourceById( string id )
         {
-            throw new NotImplementedException();
+            var filter = Builders<Resource>.Filter.Eq("_id", new ObjectId(id));
+            return await Collection.FindAsync(filter).Result.FirstOrDefaultAsync();
         }
         //[Post]
-        public Task AddResource( Resource folder )
+        public async Task AddResource( Resource resource )
         {
-            throw new NotImplementedException();
+            await Collection.InsertOneAsync( resource );
         }
         //[Put]
-        public Task UpdateResource( Resource folder )
+        public async Task UpdateResource( Resource resource )
         {
-            throw new NotImplementedException();
+            var filter = Builders<Resource>.Filter.Eq(s => s.Id, resource.Id);
+            await Collection.ReplaceOneAsync(filter, resource);
         }
         //[Delete]
-        public Task DeleteResource( string id )
+        public async Task DeleteResource( string id )
         {
-            throw new NotImplementedException();
+            var filter = Builders<Resource>.Filter.Eq(s => s.Id, id);
+            await Collection.DeleteOneAsync(filter);
         }
     } 
 }
