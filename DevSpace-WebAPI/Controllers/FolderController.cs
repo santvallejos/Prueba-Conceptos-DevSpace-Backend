@@ -2,6 +2,8 @@
 using DevSpace_DataAccessLayer.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using DevSpace_WebAPI.Infrastructure.Dto;
+using MongoDB.Bson;
 
 namespace DevSpace_WebAPI.Controllers
 {
@@ -27,7 +29,6 @@ namespace DevSpace_WebAPI.Controllers
         {
             return Ok(await _folderCollection.GetFolderById(id));
         }
-
         [HttpGet("SubFolders/{id}")]
         public async Task<IActionResult> GetSubFolders(string id)
         {
@@ -35,9 +36,16 @@ namespace DevSpace_WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddFolder([FromBody] Folder folder)
+        public async Task<IActionResult> AddFolder([FromBody] PostFolderDto folderDto)
         {
-            await _folderCollection.AddFolder(folder);
+            Folder @folder = new Folder
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                Name = folderDto.Name,
+                ParentFolderID = folderDto.ParentFolderID,
+                SubFolders = new List<string>()
+            };
+            await _folderCollection.AddFolder(@folder);
             return Ok();
         }
 

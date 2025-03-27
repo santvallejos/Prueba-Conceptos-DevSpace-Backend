@@ -2,6 +2,8 @@ using DevSpace_DataAccessLayer.Models;
 using DevSpace_DataAccessLayer.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using DevSpace_WebAPI.Infrastructure.Dto;
+using MongoDB.Bson;
 
 namespace DevSpace_WebAPI.Controllers
 {
@@ -29,9 +31,17 @@ namespace DevSpace_WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddResource([FromBody] Resource resource)
+        public async Task<IActionResult> AddResource([FromBody] PostResourceDto resourceDto)
         {
-            await _resourceCollection.AddResource(resource);
+            Resource @resource = new Resource
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                Name = resourceDto.Name,
+                Description = resourceDto.Description,
+                Url = resourceDto.Url,
+                FolderId = resourceDto.FolderId
+            };
+            await _resourceCollection.AddResource(@resource);
             return Ok();
         }
 
