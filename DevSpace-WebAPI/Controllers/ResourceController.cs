@@ -30,6 +30,12 @@ namespace DevSpace_WebAPI.Controllers
             return Ok(await _resourceCollection.GetResourceById(id));
         }
 
+        [HttpGet("folder/{folderId}")]
+        public async Task<IActionResult> GetResourcesByFolderId(string folderId)
+        {
+            return Ok(await _resourceCollection.GetResourcesByFolderId(folderId));
+        }
+        
         [HttpPost]
         public async Task<IActionResult> AddResource([FromBody] PostResourceDto resourceDto)
         {

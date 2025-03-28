@@ -10,10 +10,12 @@ using MongoDB.Bson;
     public class FolderServices
     {
         private readonly IFolderCollection _folderCollection;
+        private readonly IResourceCollection _resourceCollection;
 
-        public FolderServices(IFolderCollection folderCollection)
+        public FolderServices(IFolderCollection folderCollection, IResourceCollection resourceCollection)
         {
             _folderCollection = folderCollection;
+            _resourceCollection = resourceCollection;
         }
 
         public async Task AddFolderAsync(PostFolderDto folderDto)
@@ -79,13 +81,14 @@ using MongoDB.Bson;
                 var longSubFolders = folder.SubFolders.Count;
                 if (longSubFolders > 0)
                 {
+
                     //Elimino las carpetas hijas
                     foreach (var subFolderId in folder.SubFolders)
                     {
                         await DeleteFolderAsync(subFolderId);
                     }
-                    
                 }
+                
                 //Elimino la carpeta padre
                 await _folderCollection.DeleteFolder(folderId);
             }
