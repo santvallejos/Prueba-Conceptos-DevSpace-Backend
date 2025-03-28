@@ -108,3 +108,5 @@ C:/Users/Santi/Desktop/Projects/DevSpace/DevSpace-Backend/DevSpace-WebAPI/obj/De
 /Users/soficubilla/Documents/Projects/Dotnet/DevSpace-Backend/DevSpace-WebAPI/obj/Debug/net9.0/DevSpace.483615CF.Up2Date
 /Users/soficubilla/Documents/Projects/Dotnet/DevSpace-Backend/DevSpace-WebAPI/obj/Debug/net9.0/DevSpace-WebAPI.genruntimeconfig.cache
 /Users/soficubilla/Documents/Projects/Dotnet/DevSpace-Backend/DevSpace-WebAPI/obj/Debug/net9.0/ref/DevSpace-WebAPI.dll
+/Users/soficubilla/Documents/Projects/Dotnet/DevSpace-Backend/DevSpace-WebAPI/bin/Debug/net9.0/DevSpace-BusinessLayer.dll
+/Users/soficubilla/Documents/Projects/Dotnet/DevSpace-Backend/DevSpace-WebAPI/bin/Debug/net9.0/DevSpace-BusinessLayer.pdb

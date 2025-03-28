@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v9.0": {
       "DevSpace-WebAPI/1.0.0": {
         "dependencies": {
+          "DevSpace-BusinessLayer": "1.0.0",
           "DevSpace-DataAccessLayer": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "9.0.2",
           "Swashbuckle.AspNetCore.SwaggerGen": "8.0.0",
@@ -259,6 +260,17 @@
           }
         }
       },
+      "DevSpace-BusinessLayer/1.0.0": {
+        "dependencies": {
+          "DevSpace-DataAccessLayer": "1.0.0"
+        },
+        "runtime": {
+          "DevSpace-BusinessLayer.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "DevSpace-DataAccessLayer/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "9.0.3",
@@ -481,6 +493,11 @@
       "sha512": "sha512-U9Ix4l4cl58Kzz1rJzj5hoVTjmbx1qGMwzAcbv1j/d3NzrFaESIurQyg+ow4mivCgkE3S413y+U9k4WdnEIkRA==",
       "path": "zstdsharp.port/0.7.3",
       "hashPath": "zstdsharp.port.0.7.3.nupkg.sha512"
+    },
+    "DevSpace-BusinessLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "DevSpace-DataAccessLayer/1.0.0": {
       "type": "project",

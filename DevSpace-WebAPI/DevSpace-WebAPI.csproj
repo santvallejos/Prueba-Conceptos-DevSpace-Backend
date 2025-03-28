@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DevSpace-DataAccessLayer\DevSpace-DataAccessLayer.csproj" />
+    <ProjectReference Include="..\DevSpace-BusinessLayer\DevSpace-BusinessLayer.csproj" />
   </ItemGroup>
 
 </Project>

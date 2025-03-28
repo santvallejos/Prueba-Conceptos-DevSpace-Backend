@@ -471,6 +471,19 @@
           "lib/net7.0/ZstdSharp.dll": {}
         }
       },
+      "DevSpace-BusinessLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "DevSpace-DataAccessLayer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DevSpace-BusinessLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DevSpace-BusinessLayer.dll": {}
+        }
+      },
       "DevSpace-DataAccessLayer/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
@@ -1283,6 +1296,11 @@
         "zstdsharp.port.nuspec"
       ]
     },
+    "DevSpace-BusinessLayer/1.0.0": {
+      "type": "project",
+      "path": "../DevSpace-BusinessLayer/DevSpace-BusinessLayer.csproj",
+      "msbuildProject": "../DevSpace-BusinessLayer/DevSpace-BusinessLayer.csproj"
+    },
     "DevSpace-DataAccessLayer/1.0.0": {
       "type": "project",
       "path": "../DevSpace-DataAccessLayer/DevSpace-DataAccessLayer.csproj",
@@ -1291,6 +1309,7 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "DevSpace-BusinessLayer >= 1.0.0",
       "DevSpace-DataAccessLayer >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 9.0.2",
       "Swashbuckle.AspNetCore.SwaggerGen >= 8.0.0",
@@ -1323,6 +1342,9 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
+            "/Users/soficubilla/Documents/Projects/Dotnet/DevSpace-Backend/DevSpace-BusinessLayer/DevSpace-BusinessLayer.csproj": {
+              "projectPath": "/Users/soficubilla/Documents/Projects/Dotnet/DevSpace-Backend/DevSpace-BusinessLayer/DevSpace-BusinessLayer.csproj"
+            },
             "/Users/soficubilla/Documents/Projects/Dotnet/DevSpace-Backend/DevSpace-DataAccessLayer/DevSpace-DataAccessLayer.csproj": {
               "projectPath": "/Users/soficubilla/Documents/Projects/Dotnet/DevSpace-Backend/DevSpace-DataAccessLayer/DevSpace-DataAccessLayer.csproj"
             }

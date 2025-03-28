@@ -42,12 +42,13 @@ namespace DevSpace_DataAccessLayer.Repositories.Collection
         {
             await Collection.InsertOneAsync( folder );
 
-            if(!string.IsNullOrEmpty(folder.ParentFolderID))
+            //Añadir referencia Id a la carpeta padre
+/*             if(!string.IsNullOrEmpty(folder.ParentFolderID))
             {
                 var filter = Builders<Folder>.Filter.Eq("_id", new ObjectId(folder.ParentFolderID));
                 var update = Builders<Folder>.Update.Push("SubFolders", folder.Id);
                 await Collection.UpdateOneAsync(filter, update);
-            }
+            } */
         }
         //[Put]
         public async Task UpdateFolder( Folder folder )

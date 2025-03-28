@@ -12,10 +12,12 @@ namespace DevSpace_WebAPI.Controllers
     public class FolderController : ControllerBase
     {
         private readonly IFolderCollection _folderCollection;
+        private readonly FolderServices _folderServices;
 
-        public FolderController(IFolderCollection folderCollection)
+        public FolderController(IFolderCollection folderCollection, FolderServices folderServices)
         {
             _folderCollection = folderCollection;
+            _folderServices = folderServices;
         }
 
         [HttpGet]
@@ -45,8 +47,16 @@ namespace DevSpace_WebAPI.Controllers
                 ParentFolderID = folderDto.ParentFolderID,
                 SubFolders = new List<string>()
             };
-            await _folderCollection.AddFolder(@folder);
-            return Ok();
+
+            try
+            {
+                await _folderServices.AddFolderAsync(@folder);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut]
