@@ -69,8 +69,15 @@ namespace DevSpace_WebAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFolder(string id)
         {
-            await _folderCollection.DeleteFolder(id);
-            return Ok();
+            try
+            {
+                await _folderServices.DeleteFolderAsync(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

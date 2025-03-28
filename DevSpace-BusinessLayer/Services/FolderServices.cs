@@ -41,4 +41,28 @@ using DevSpace_DataAccessLayer.Repositories.Interfaces;
                 _folderCollection.AddFolder(folder);
             }
         }
+
+        public async Task DeleteFolderAsync(string folderId)
+        {
+            var folder = await _folderCollection.GetFolderById(folderId);
+            if (folder != null)
+            {
+                var longSubFolders = folder.SubFolders.Count;
+                if (longSubFolders > 0)
+                {
+                    //Necesito eliminar las carpetas hijas
+                    foreach (var subFolderId in folder.SubFolders)
+                    {
+                        await DeleteFolderAsync(subFolderId);
+                    }
+                    
+                }
+                //Elimino la carpeta padre
+                await _folderCollection.DeleteFolder(folderId);
+            }
+            else
+            {
+                throw new Exception("La carpeta no existe");
+            }
+        }
     }
