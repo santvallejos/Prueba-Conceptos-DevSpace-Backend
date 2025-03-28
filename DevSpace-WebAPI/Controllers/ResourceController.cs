@@ -2,7 +2,7 @@ using DevSpace_DataAccessLayer.Models;
 using DevSpace_DataAccessLayer.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using DevSpace_WebAPI.Infrastructure.Dto;
+using DevSpace_BusinessLayer.Infrastructure.Dto;
 using MongoDB.Bson;
 
 namespace DevSpace_WebAPI.Controllers
