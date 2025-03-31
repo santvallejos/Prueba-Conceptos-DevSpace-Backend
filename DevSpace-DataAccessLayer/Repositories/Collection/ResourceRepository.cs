@@ -59,5 +59,11 @@ namespace DevSpace_DataAccessLayer.Repositories.Collection
             var filter = Builders<Resource>.Filter.Eq(s => s.Id, id);
             await Collection.DeleteOneAsync(filter);
         }
+
+        public async Task DeleteResourcesByFolderId(string folderId)
+        {
+            var filter = Builders<Resource>.Filter.Eq(s => s.FolderId, folderId);
+            await Collection.DeleteManyAsync(filter);
+        }
     } 
 }

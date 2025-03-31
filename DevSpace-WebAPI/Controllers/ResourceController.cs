@@ -64,5 +64,12 @@ namespace DevSpace_WebAPI.Controllers
             await _resourceCollection.DeleteResource(id);
             return Ok();
         }
+
+        [HttpDelete("folder/{folderId}")]
+        public async Task<IActionResult> DeleteResourcesByFolderId(string folderId)
+        {
+            await _resourceCollection.DeleteResourcesByFolderId(folderId);
+            return Ok();
+        }
     }
 }

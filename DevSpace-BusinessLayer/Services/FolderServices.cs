@@ -79,17 +79,21 @@ using MongoDB.Bson;
             {
                 //Obtengo la cantidad de carpetas hijas
                 var longSubFolders = folder.SubFolders.Count;
-                if (longSubFolders > 0)
+                //Recorrido de profundidad iterativo
+                if(longSubFolders > 0)
                 {
-
-                    //Elimino las carpetas hijas
                     foreach (var subFolderId in folder.SubFolders)
                     {
+                        //Eliminar sus recursos
+                        var resources = await _resourceCollection.GetResourcesByFolderId(subFolderId);
+                        foreach (var resource in resources)
+                        {
+                            await _resourceCollection.DeleteResource(resource.Id);
+                        }
                         await DeleteFolderAsync(subFolderId);
                     }
                 }
-                
-                //Elimino la carpeta padre
+                await _resourceCollection.DeleteResourcesByFolderId(folderId);
                 await _folderCollection.DeleteFolder(folderId);
             }
             else

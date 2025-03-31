@@ -14,5 +14,6 @@ namespace DevSpace_DataAccessLayer.Repositories.Interfaces
         Task AddResource( Resource resource );
         Task UpdateResource( Resource resource );
         Task DeleteResource( string id );
+        Task DeleteResourcesByFolderId( string folderId );
     }
 }
