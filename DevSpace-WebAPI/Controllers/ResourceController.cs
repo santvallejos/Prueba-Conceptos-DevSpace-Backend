@@ -12,10 +12,12 @@ namespace DevSpace_WebAPI.Controllers
     public class ResourceController : ControllerBase
     {
         private readonly IResourceCollection _resourceCollection;
+        private readonly ResourceServices _resourceServices;
 
-        public ResourceController(IResourceCollection resourceCollection)
+        public ResourceController(IResourceCollection resourceCollection, ResourceServices resourceServices)
         {
             _resourceCollection = resourceCollection;
+            _resourceServices = resourceServices;
         }
 
         [HttpGet]
@@ -35,7 +37,13 @@ namespace DevSpace_WebAPI.Controllers
         {
             return Ok(await _resourceCollection.GetResourcesByFolderId(folderId));
         }
-        
+
+        [HttpGet("favorites")]
+        public async Task<IActionResult> GetResourcesFavorites()
+        {
+            return Ok(await _resourceCollection.GetResourcesFavorites());
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddResource([FromBody] PostResourceDto resourceDto)
         {
@@ -45,7 +53,9 @@ namespace DevSpace_WebAPI.Controllers
                 Name = resourceDto.Name,
                 Description = resourceDto.Description,
                 Url = resourceDto.Url,
-                FolderId = resourceDto.FolderId
+                FolderId = resourceDto.FolderId,
+                Favorite = false,
+                CreatedOn = DateTime.UtcNow
             };
             await _resourceCollection.AddResource(@resource);
             return Ok();
@@ -55,6 +65,13 @@ namespace DevSpace_WebAPI.Controllers
         public async Task<IActionResult> UpdateResource([FromBody] Resource resource)
         {
             await _resourceCollection.UpdateResource(resource);
+            return Ok();
+        }
+
+        [HttpPut("favorite/{id}")]
+        public async Task<IActionResult> UpdateResourceFavorite(string id)
+        {
+            await _resourceServices.UpdateResourceFavoriteAsync(id);
             return Ok();
         }
 

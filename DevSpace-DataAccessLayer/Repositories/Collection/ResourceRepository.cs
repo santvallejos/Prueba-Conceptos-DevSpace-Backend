@@ -40,6 +40,13 @@ namespace DevSpace_DataAccessLayer.Repositories.Collection
             return await Collection.FindAsync(filter).Result.ToListAsync();
         }
 
+        //[Get]
+        public async Task<List<Resource>> GetResourcesFavorites()
+        {
+            var filter = Builders<Resource>.Filter.Eq(s => s.Favorite, true);
+            return await Collection.FindAsync(filter).Result.ToListAsync();
+        }
+
         //[Post]
         public async Task AddResource( Resource resource )
         {

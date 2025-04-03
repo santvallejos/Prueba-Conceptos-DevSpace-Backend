@@ -16,5 +16,8 @@ namespace DevSpace_DataAccessLayer.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string Url { get; set; }
+        public bool Favorite { get; set; } = false;
+        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)] // Asegura que se almacene en UTC
+        public DateTime CreatedOn { get; set; }
     }
 }
