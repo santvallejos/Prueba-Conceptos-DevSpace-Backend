@@ -34,6 +34,13 @@ namespace DevSpace_DataAccessLayer.Repositories.Collection
         }
 
         //[Get]
+        public async Task<List<Resource>> GetResourcesByName( string name )
+        {
+            var filter = Builders<Resource>.Filter.Regex(s => s.Name, new BsonRegularExpression(name, "i"));
+            return await Collection.FindAsync(filter).Result.ToListAsync();
+        }
+
+        //[Get]
         public async Task<List<Resource>> GetResourcesByFolderId(string folderId)
         {
             var filter = Builders<Resource>.Filter.Eq(s => s.FolderId, folderId);

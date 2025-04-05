@@ -10,6 +10,7 @@ namespace DevSpace_DataAccessLayer.Repositories.Interfaces
     {
         Task<List<Folder>> GetFolders();
         Task<Folder> GetFolderById( string id );
+        Task<List<Folder>> GetFoldersByName( string name );
         Task<List<string>> GetSubFolders( string id );
         Task AddFolder( Folder folder );
         Task UpdateFolder( Folder folder );

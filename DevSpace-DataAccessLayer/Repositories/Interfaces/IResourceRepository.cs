@@ -10,6 +10,7 @@ namespace DevSpace_DataAccessLayer.Repositories.Interfaces
     {
         Task<List<Resource>> GetResources();
         Task<Resource> GetResourceById( string id );
+        Task<List<Resource>> GetResourcesByName( string name );
         Task<List<Resource>> GetResourcesByFolderId( string folderId );
         Task<List<Resource>> GetResourcesFavorites();
         Task AddResource( Resource resource );

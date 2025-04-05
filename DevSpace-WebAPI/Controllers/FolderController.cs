@@ -33,12 +33,6 @@ namespace DevSpace_WebAPI.Controllers
             //Obtenemos la carpeta por id
             return Ok(await _folderCollection.GetFolderById(id));
         }
-        [HttpGet("SubFolders/{id}")]
-        public async Task<IActionResult> GetSubFolders(string id)
-        {
-            //Obtenemos las subcarpetas de la carpeta padre
-            return Ok(await _folderCollection.GetSubFolders(id));
-        }
 
         [HttpPost]
         public async Task<IActionResult> AddFolder([FromBody] PostFolderDto folderDto)
@@ -88,6 +82,19 @@ namespace DevSpace_WebAPI.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [HttpGet("subfolders/{id}")]
+        public async Task<IActionResult> GetSubFolders(string id)
+        {
+            //Obtenemos las subcarpetas de la carpeta padre
+            return Ok(await _folderCollection.GetSubFolders(id));
+        }
+
+        [HttpGet("folders/{name}")]
+        public async Task<IActionResult> GetFoldersByName (string name)
+        {
+            return Ok(await _folderCollection.GetFoldersByName(name));
         }
     }
 }

@@ -32,18 +32,6 @@ namespace DevSpace_WebAPI.Controllers
             return Ok(await _resourceCollection.GetResourceById(id));
         }
 
-        [HttpGet("folder/{folderId}")]
-        public async Task<IActionResult> GetResourcesByFolderId(string folderId)
-        {
-            return Ok(await _resourceCollection.GetResourcesByFolderId(folderId));
-        }
-
-        [HttpGet("favorites")]
-        public async Task<IActionResult> GetResourcesFavorites()
-        {
-            return Ok(await _resourceCollection.GetResourcesFavorites());
-        }
-
         [HttpPost]
         public async Task<IActionResult> AddResource([FromBody] PostResourceDto resourceDto)
         {
@@ -68,6 +56,25 @@ namespace DevSpace_WebAPI.Controllers
             return Ok();
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteResource(string id)
+        {
+            await _resourceCollection.DeleteResource(id);
+            return Ok();
+        }
+
+        [HttpGet("resources/{name}")]
+        public async Task<IActionResult> GetResourcesByName (string name)
+        {
+            return Ok(await _resourceCollection.GetResourcesByName(name));
+        }
+
+        [HttpGet("favorites")]
+        public async Task<IActionResult> GetResourcesFavorites()
+        {
+            return Ok(await _resourceCollection.GetResourcesFavorites());
+        }
+
         [HttpPut("favorite/{id}")]
         public async Task<IActionResult> UpdateResourceFavorite(string id)
         {
@@ -75,11 +82,10 @@ namespace DevSpace_WebAPI.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteResource(string id)
+        [HttpGet("folder/{folderId}")]
+        public async Task<IActionResult> GetResourcesByFolderId(string folderId)
         {
-            await _resourceCollection.DeleteResource(id);
-            return Ok();
+            return Ok(await _resourceCollection.GetResourcesByFolderId(folderId));
         }
 
         [HttpDelete("folder/{folderId}")]
