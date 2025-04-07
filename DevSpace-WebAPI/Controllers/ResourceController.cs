@@ -23,76 +23,116 @@ namespace DevSpace_WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetResources()
         {
-            return Ok(await _resourceCollection.GetResources());
+            try
+            {
+                return Ok(await _resourceCollection.GetResources());
+            }catch(Exception ex){
+                return BadRequest(ex.Message); 
+            }
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetResourceById(string id)
         {
-            return Ok(await _resourceCollection.GetResourceById(id));
+            try
+            {
+                return Ok(await _resourceCollection.GetResourceById(id));
+            }catch(Exception ex){
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> AddResource([FromBody] PostResourceDto resourceDto)
         {
-            Resource @resource = new Resource
+            try
             {
-                Id = ObjectId.GenerateNewId().ToString(),
-                Name = resourceDto.Name,
-                Description = resourceDto.Description,
-                Url = resourceDto.Url,
-                FolderId = resourceDto.FolderId,
-                Favorite = false,
-                CreatedOn = DateTime.UtcNow
-            };
-            await _resourceCollection.AddResource(@resource);
-            return Ok();
+                await _resourceServices.AddResourceAsync(resourceDto);
+                return Ok();
+            }catch(Exception ex){
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateResource([FromBody] Resource resource)
         {
-            await _resourceCollection.UpdateResource(resource);
-            return Ok();
+            try
+            {
+                await _resourceCollection.UpdateResource(resource);
+                return Ok();
+            }catch(Exception ex){
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteResource(string id)
         {
-            await _resourceCollection.DeleteResource(id);
-            return Ok();
+            try
+            {
+                await _resourceCollection.DeleteResource(id);
+                return Ok();
+            }catch(Exception ex){
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("resources/{name}")]
         public async Task<IActionResult> GetResourcesByName (string name)
         {
-            return Ok(await _resourceCollection.GetResourcesByName(name));
+            try
+            {
+                return Ok(await _resourceCollection.GetResourcesByName(name));
+            }catch(Exception ex){
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("favorites")]
         public async Task<IActionResult> GetResourcesFavorites()
         {
-            return Ok(await _resourceCollection.GetResourcesFavorites());
+            try
+            {
+                return Ok(await _resourceCollection.GetResourcesFavorites());
+            }catch(Exception ex){
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut("favorite/{id}")]
         public async Task<IActionResult> UpdateResourceFavorite(string id)
         {
-            await _resourceServices.UpdateResourceFavoriteAsync(id);
-            return Ok();
+            try
+            {
+                await _resourceServices.UpdateResourceFavoriteAsync(id);
+                return Ok();
+            }catch(Exception ex){
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("folder/{folderId}")]
         public async Task<IActionResult> GetResourcesByFolderId(string folderId)
         {
-            return Ok(await _resourceCollection.GetResourcesByFolderId(folderId));
+            try
+            {
+                return Ok(await _resourceCollection.GetResourcesByFolderId(folderId));
+            }catch(Exception ex){
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete("folder/{folderId}")]
         public async Task<IActionResult> DeleteResourcesByFolderId(string folderId)
         {
-            await _resourceCollection.DeleteResourcesByFolderId(folderId);
-            return Ok();
+            try
+            {
+                await _resourceCollection.DeleteResourcesByFolderId(folderId);
+                return Ok();
+            }catch(Exception ex){
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

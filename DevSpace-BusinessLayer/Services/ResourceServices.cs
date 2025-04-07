@@ -6,14 +6,52 @@ using DevSpace_DataAccessLayer.Repositories.Collection;
 using DevSpace_DataAccessLayer.Repositories.Interfaces;
 using DevSpace_BusinessLayer.Infrastructure.Dto;
 using MongoDB.Bson;
+using System.Threading.Tasks;
 
 public class ResourceServices
 {
     private readonly IResourceCollection _resourceCollection;
+    private readonly IFolderCollection _folderCollection;
 
-    public ResourceServices(IResourceCollection resourceCollection)
+    public ResourceServices(IResourceCollection resourceCollection, IFolderCollection folderCollection)
     {
         _resourceCollection = resourceCollection;
+        _folderCollection = folderCollection;
+    }
+
+    public async Task AddResourceAsync(PostResourceDto resourceDto)
+    {
+        Resource @resource = new Resource()
+        {
+            Id = ObjectId.GenerateNewId().ToString(),
+            Name = resourceDto.Name,
+            Description = resourceDto.Description,
+            Url = resourceDto.Url,
+            FolderId = resourceDto.FolderId,
+            FolderName = "",
+            Favorite = false,
+            CreatedOn = DateTime.UtcNow
+        };
+
+        //Si el archivo no esta en la raiz de la carpeta
+        if(@resource.FolderId != null)
+        {
+            //Obtenemos la carpete
+            var folder = await _folderCollection.GetFolderById(@resource.FolderId);
+            //Si la carpeta existe
+            if(folder != null)
+            {
+                //Obtenemos el nombre de la carpeta
+                @resource.FolderName = folder.Name;
+            }
+            else
+            {
+                throw new Exception("No existe una carpeta con ese Id");
+            }
+        }
+
+        //Agrego el recurso
+        await _resourceCollection.AddResource(@resource);
     }
 
     public async Task UpdateResourceFavoriteAsync(string Id)

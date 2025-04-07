@@ -23,15 +23,29 @@ namespace DevSpace_WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetFolders()
         {
-            //Obtenemos todas las carpetas
-            return Ok(await _folderCollection.GetFolders());
+            try
+            {
+                //Obtenemos todas las carpetas
+                return Ok(await _folderCollection.GetFolders());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message); 
+            }
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetFolderById(string id)
         {
-            //Obtenemos la carpeta por id
-            return Ok(await _folderCollection.GetFolderById(id));
+            try
+            {
+                //Obtenemos la carpeta por id
+                return Ok(await _folderCollection.GetFolderById(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message); 
+            }
         }
 
         [HttpPost]
@@ -57,6 +71,7 @@ namespace DevSpace_WebAPI.Controllers
             {
                 return BadRequest();
             }
+
             try
             {
                 //Actualizamos el name de la carpeta
@@ -87,14 +102,28 @@ namespace DevSpace_WebAPI.Controllers
         [HttpGet("subfolders/{id}")]
         public async Task<IActionResult> GetSubFolders(string id)
         {
-            //Obtenemos las subcarpetas de la carpeta padre
-            return Ok(await _folderCollection.GetSubFolders(id));
+            try
+            {
+                //Obtenemos las subcarpetas de la carpeta padre
+                return Ok(await _folderCollection.GetSubFolders(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);  
+            }
         }
 
         [HttpGet("folders/{name}")]
         public async Task<IActionResult> GetFoldersByName (string name)
         {
-            return Ok(await _folderCollection.GetFoldersByName(name));
+            try
+            {
+                return Ok(await _folderCollection.GetFoldersByName(name));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

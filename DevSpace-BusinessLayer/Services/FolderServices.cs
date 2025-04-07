@@ -38,7 +38,7 @@ using MongoDB.Bson;
                 if(parentFolder != null)
                 {
                     //Agregamos la carpeta indepedientemente
-                    _folderCollection.AddFolder(@folder);
+                    await _folderCollection.AddFolder(@folder);
                     //Agreamos la referencia del Id de la carpeta hija al padre
                     parentFolder.SubFolders.Add(@folder.Id);
                     await _folderCollection.UpdateFolder(parentFolder);
@@ -50,7 +50,7 @@ using MongoDB.Bson;
             }
             else
             {
-                _folderCollection.AddFolder(@folder);
+                await _folderCollection.AddFolder(@folder);
             }
         }
 
@@ -71,6 +71,7 @@ using MongoDB.Bson;
             }
         }
 
+        //Posibles mejoras
         public async Task DeleteFolderAsync(string folderId)
         {
             //Obtengo la carpeta
@@ -84,12 +85,7 @@ using MongoDB.Bson;
                 {
                     foreach (var subFolderId in folder.SubFolders)
                     {
-                        //Eliminar sus recursos
-                        var resources = await _resourceCollection.GetResourcesByFolderId(subFolderId);
-                        foreach (var resource in resources)
-                        {
-                            await _resourceCollection.DeleteResource(resource.Id);
-                        }
+                        await _resourceCollection.DeleteResourcesByFolderId(subFolderId);
                         await DeleteFolderAsync(subFolderId);
                     }
                 }
