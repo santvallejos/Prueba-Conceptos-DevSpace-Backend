@@ -26,12 +26,13 @@ builder.Services.AddCors(options => {
     options.AddPolicy("AllowLocalhost4200", policy => {
         policy.WithOrigins("http://localhost:5173") 
                 .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowAnyOrigin();
+                .AllowAnyMethod();
     });
 });
 
 var app = builder.Build();
+
+app.UseCors("AllowLocalhost4200"); 
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DevSpace-DataAccessLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+adffb5c823282f1603e5ecfe77bc85f29e88c40d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+686f924a5e1911e427c6262edfc1d6cf5ec668c1")]
 [assembly: System.Reflection.AssemblyProductAttribute("DevSpace-DataAccessLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DevSpace-DataAccessLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
