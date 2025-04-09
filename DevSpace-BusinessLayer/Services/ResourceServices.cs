@@ -24,11 +24,14 @@ public class ResourceServices
         Resource @resource = new Resource()
         {
             Id = ObjectId.GenerateNewId().ToString(),
-            Name = resourceDto.Name,
-            Description = resourceDto.Description,
-            Url = resourceDto.Url,
             FolderId = resourceDto.FolderId,
             FolderName = "",
+            Name = resourceDto.Name,
+            Description = resourceDto.Description,
+            Type = resourceDto.Type,
+            Url = resourceDto.Url,
+            Code = resourceDto.Code,
+            Text = resourceDto.Text,
             Favorite = false,
             CreatedOn = DateTime.UtcNow
         };

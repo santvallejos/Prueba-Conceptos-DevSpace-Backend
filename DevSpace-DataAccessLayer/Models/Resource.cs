@@ -7,6 +7,14 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace DevSpace_DataAccessLayer.Models
 {
+    //Tipos de recursos que se pueden guardar en la base de datos
+    public enum ResourceType
+    {
+        Url,
+        Code,
+        Text
+    }
+
     public class Resource
     {
         [BsonId]
@@ -15,8 +23,11 @@ namespace DevSpace_DataAccessLayer.Models
         public string? FolderId { get; set;}
         public string? FolderName { get; set;}
         public string Name { get; set; }
-        public string Description { get; set; }
-        public string Url { get; set; }
+        public string? Description { get; set; }
+        public ResourceType Type { get; set; }
+        public string? Url { get; set; }
+        public string? Code { get; set; }
+        public string? Text { get; set; }
         public bool Favorite { get; set; } = false;
         [BsonDateTimeOptions(Kind = DateTimeKind.Utc)] // Asegura que se almacene en UTC
         public DateTime CreatedOn { get; set; }
