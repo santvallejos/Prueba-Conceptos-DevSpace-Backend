@@ -1,0 +1,593 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>api</name>
+    </assembly>
+    <members>
+        <member name="M:api.Controllers.FolderController.GetFolders">
+            <summary> Obtiene todas las carpetas disponibles. </summary>
+            <remarks>
+            Retorna una lista de carpetas almacenadas en la base de datos.
+            ### Ejemplo de uso:
+                GET /api/folder
+                
+            #### Respuesta exitosa (200 OK):
+            ```json
+            [
+               {
+                    "id": "681d0aa3f03a81ee9f9e53b6",
+                    "name": "carpeta 1",
+                    "parentFolderID": null,
+                    "subFolders": [
+                        "681d0abbf03a81ee9f9e53b7"
+                    ]
+               },
+               {
+                    "id": "681d0abbf03a81ee9f9e53b7",
+                    "name": "carpeta 1-1 ",
+                    "parentFolderID": "681d0aa3f03a81ee9f9e53b6",
+                    "subFolders": []
+               }
+            ]
+            ```
+            </remarks>
+            <returns>Una lista de carpetas</returns>
+            <response code="200">Lista de carpetas obtenida correctamente</response>
+            <response code="400">Ocurrió un error al obtener las carpetas</response>
+        </member>
+        <member name="M:api.Controllers.FolderController.GetFolderById(System.String)">
+            <summary> Obtiene una carpeta por su ID. </summary>
+            <remarks> 
+            Retorna una carpeta por su ID.
+            ### Ejemplo de uso:
+                GET /api/folder/681d0aa3f03a81ee9f9e53b6
+                
+            #### Respuesta exitosa (200 OK):
+            ```json
+            [
+               {
+                    "id": "681d0aa3f03a81ee9f9e53b6",
+                    "name": "carpeta 1",
+                    "parentFolderID": null,
+                    "subFolders": [
+                        "681d0abbf03a81ee9f9e53b7"
+                    ]
+               }
+            ]
+            ```
+            </remarks>
+            <param name="id"></param>
+            <returns> Una carpeta especifia </returns>
+            <response code="200">Carpeta obtenida correctamente</response>
+            <response code="400">Ocurrió un error al obtener la carpeta</response>
+            <response code="404">La carpeta no fue encontrada</response>
+        </member>
+        <member name="M:api.Controllers.FolderController.GetFoldersByParentFolderID(System.String)">
+            <summary> Obtener carpetas por el ID padre. </summary>
+            <remarks> 
+            Retorna una lista de carpetas por el ID padre.
+            ### Ejemplo de uso:
+                GET /api/folder/parent/681d0aa3f03a81ee9f9e53b6
+                
+            #### Respuesta exitosa (200 OK):
+            ```json
+            [
+               {
+                    "id": "681d0abbf03a81ee9f9e53b7",
+                    "name": "carpeta 1-1 ",
+                    "parentFolderID": "681d0aa3f03a81ee9f9e53b6",
+                    "subFolders": []
+               }
+            ]
+            ```
+            </remarks>
+            <param name="parentFolderID"></param> // ID de la carpeta padre, puede ser nulo
+            <returns> Una lista de carpetas especificas </returns>
+            <response code="200">Carpetas obtenidas correctamente</response>
+            <response code="400">Ocurrió un error al obtener las carpetas</response>
+            <response code="404">La carpeta no fue encontrada</response>
+        </member>
+        <member name="M:api.Controllers.FolderController.AddFolder(api.Infrastructure.Dto.FolderDto)">
+             <summary> Crea uan carpeta. </summary>
+             <remarks> 
+             Crea una carpeta en base al modelo dto de folder
+             
+             ### Ejemplo de uso:
+                 POST /api/folder
+            ```json
+                 {
+                     "name": "carpeta 2",
+                     "parentFolderID": null
+                 }
+            ```
+            
+             #### Respuesta exitosa (200 OK):
+             ```json
+             [
+                {
+                     "id": "683f55580b7680d1cb0afc61",
+                     "name": "carpeta 2",
+                     "parentFolderID": null,
+                     "subFolders": []
+                }
+             ]
+             </remarks>
+             <param name="folderDto"></param>
+             <returns> Una carpeta creada </returns>
+             <response code="200">Carpeta creada correctamente</response>
+             <response code="400">Ocurrió un error al crear la carpeta</response>
+        </member>
+        <member name="M:api.Controllers.FolderController.UpdateFolder(System.String,api.Infrastructure.Dto.NameFolderDto)">
+             <summary> Actualiza el nombre de una carpeta. </summary>
+             <remarks> 
+             Actualiza el nombre de una carpeta en base al modelo dto de folder.
+             
+             ### Ejemplo de uso:
+                 PUT /api/folder/681d0aa3f03a81ee9f9e53b6
+            ```json
+                 {
+                     "name": "Renombar carpeta 1"
+                 }
+            ```
+             </remarks>
+             <param name="id"></param>
+             <param name="folderDto"></param>
+             <returns> Una carpeta actualizada </returns>
+             <response code="200">Carpeta actualizada correctamente</response>
+             <response code="400">Ocurrió un error al actualizar la carpeta</response>
+             <response code="404">La carpeta no fue encontrada para actualizar</response>
+        </member>
+        <member name="M:api.Controllers.FolderController.UpdateReferenceFolder(System.String,api.Infrastructure.Dto.ParentFolderDto)">
+             <summary> Actualiza la referencia del ParentFolderId de una carpeta. </summary>
+             <remarks> 
+             Actualiza la referencia del ParentFolderId de una carpeta en base al modelo dto de folder.
+             
+             ### Ejemplo de uso:
+                 PUT /api/folder/parent/681d0abbf03a81ee9f9e53b7
+            ```json
+                 {
+                     "parentFolderID": null
+                 }
+            ```
+             </remarks>
+             <param name="id"></param>
+             <param name="folderDto"></param>
+             <returns> Una carpeta actualizada </returns>
+             <response code="200">Carpeta actualizada correctamente</response>
+             <response code="400">Ocurrió un error al actualizar la carpeta</response>
+             <response code="404">La carpeta no fue encontrada para actualizar</response>
+        </member>
+        <member name="M:api.Controllers.FolderController.DeleteFolder(System.String)">
+             <summary> Elimina una carpeta. </summary>
+             <remarks> 
+             Elimina una carpeta en base al ID. 
+             
+             ### Ejemplo de uso:
+                 DELETE /api/folder/681d0aa3f03a81ee9f9e53b6
+             Nota:
+             - Si la carpeta tiene subcarpetas, estas se eliminarán también.
+            
+             </remarks>
+             <param name="id"></param>
+             <returns> Carpeta eliminada </returns>
+             <response code="200">Carpeta eliminada correctamente</response>
+             <response code="400">Ocurrió un error al eliminar la carpeta</response>
+             <response code="404">La carpeta no fue encontrada para eliminar</response>
+        </member>
+        <member name="M:api.Controllers.FolderController.GetSubFolders(System.String)">
+            <summary> Obtiene el id de las subcarpetas de una carpeta especifica </summary>
+            <remarks> 
+            Retorna una lista de subcarpetas por el ID padre.
+            
+            ### Ejemplo de uso:
+                GET /api/folder/subfolders/681d0aa3f03a81ee9f9e53b6
+                
+            #### Respuesta exitosa (200 OK):
+            ```json
+            [
+               "681d0abbf03a81ee9f9e53b7"
+            ]
+            ```
+            </remarks>
+            <param name="id"></param>
+            <returns> Una lista de subcarpetas especificas </returns>
+            <response code="200">Subcarpetas obtenidas correctamente</response>
+            <response code="400">Ocurrió un error al obtener las subcarpetas</response>
+            <response code="404">La carpeta no fue encontrada</response>
+        </member>
+        <member name="M:api.Controllers.FolderController.GetFoldersByName(System.String)">
+            <summary> Obtiene las carpetas por nombre. </summary>
+            <remarks> 
+            Retorna una lista de carpetas por nombre.
+            
+            ### Ejemplo de uso:
+                GET /api/folder/name/Carpeta 1
+                
+            #### Respuesta exitosa (200 OK):
+            ```json
+            [
+               {
+                    "id": "681d0aa3f03a81ee9f9e53b6",
+                    "name": "Renombar carpeta 1",
+                    "parentFolderID": null,
+                    "subFolders": [
+                        "681d0abbf03a81ee9f9e53b7"
+                    ]
+               }
+            ]
+            ```
+            </remarks>
+            <param name="name"></param>
+            <returns> Una lista de carpetas especificas </returns>
+            <response code="200">Carpetas obtenidas correctamente</response>
+            <response code="400">Ocurrió un error al obtener las carpetas</response>
+            <response code="404">La carpeta no fue encontrada</response>
+        </member>
+        <member name="M:api.Controllers.ResourceController.GetResources">
+             <summary>Obtener todos los recursos disponibles.</summary>
+             <remarks>
+             Retornar una lista de recursos almacenadas en la base de datos.
+             El campo 'value' contiene el contenido del recurso y el campo 'type' determina cómo interpretarlo:
+             - Type 0 (Url): value contiene una URL
+             - Type 1 (Code): value contiene código
+             - Type 2 (Text): value contiene texto
+             
+             ### Ejemplo de uso:
+                 GET /api/resource
+            
+             ### Respuesta exitosa (200 OK):
+             ```json
+             [
+                 {
+                     "id": "68249ee31a7e2be077274172",
+                     "folderId": "681d0aa3f03a81ee9f9e53b6",
+                     "name": "Recurso 1",
+                     "description": "Recurso 1",
+                     "type": 0,
+                     "value": "https://excalidraw.com/",
+                     "favorite": true,
+                     "createdOn": "2025-05-14T13:47:15.483Z"
+                 }
+             ]
+             ```
+             </remarks>
+             <returns>Una lista de recursos</returns>
+             <response code="200">Lista de recursos obtenida correctamente</response>
+             <response code="400">Error en la solicitud</response>
+        </member>
+        <member name="M:api.Controllers.ResourceController.GetResourceById(System.String)">
+             <summary>Obtener un recursos especifico por su id</summary>
+             <remarks>
+             Retornar un recurso especifico por su id.
+             El campo 'value' contiene el contenido del recurso según su tipo.
+            
+             ### Ejemplo de uso:
+                 GET /api/resource/68249ee31a7e2be077274172
+            
+             ### Respuesta exitosa (200 OK):
+             ```json
+             [
+                 {
+                     "id": "68249ee31a7e2be077274172",
+                     "folderId": "681d0aa3f03a81ee9f9e53b6",
+                     "name": "Recurso 1",
+                     "description": "Recurso 1",
+                     "type": 0,
+                     "value": "https://excalidraw.com/",
+                     "favorite": true,
+                     "createdOn": "2025-05-14T13:47:15.483Z"
+                 }
+             ]
+             ```
+             </remarks>
+             <param name="id"></param>
+             <returns>Un recurso especifico</returns>
+             <response code="200">Recurso obtenido correctamente</response>
+             <response code="400">Error en la solicitud</response>
+             <response code="404">Recurso no encontrado</response>
+        </member>
+        <member name="M:api.Controllers.ResourceController.AddResource(api.Infrastructure.Dto.PostResourceDto)">
+             <summary>Crear un recurso</summary>
+             <remarks>
+             Crear un recurso.
+             Especifica el tipo de recurso (Type) y su contenido en el campo Value.
+             Tipos disponibles:
+             - 0 = Url
+             - 1 = Code (requiere CodeLanguage)
+             - 2 = Text
+             
+             
+             ### Ejemplo de uso para código:
+                 POST /api/resource
+            ```json
+            {
+                 "FolderId": null,
+                 "Name": "Ejemplo Código",
+                 "Description": "Función en JavaScript",
+                 "Type": 1,
+                 "CodeType": "Javascript",
+                 "Value": "function hello() { console.log('Hola mundo!'); }"
+             }
+            ```
+            
+             ### Respuesta exitosa (200 OK):
+             ```json
+             [
+                 {
+                     "id": "68405309d7b1ae7fee012d92",
+                     "folderId": null,
+                     "name": "Ejemplo Código",
+                     "description": "Función en JavaScript",
+                     "type": 1,
+                     "codeType": "Javascript",
+                     "value": "function hello() { console.log('Hola mundo!'); }",
+                     "favorite": false,
+                     "createdOn": "2025-05-14T13:47:15.483Z"
+                 }
+             ]
+             ```
+             </remarks>
+             <param name="resourceDto"></param>
+             <returns>Un recursos creado</returns>
+             <response code="200">Recurso creado correctamente</response>
+             <response code="400">Error en la solicitud</response>
+        </member>
+        <member name="M:api.Controllers.ResourceController.UpdateResource(System.String,api.Infrastructure.Dto.UpdateResourceDto)">
+             <summary>Actualizar un recurso</summary>
+             <remarks>
+             Actualizar un recurso.
+             Actualiza el contenido del recurso en el campo Value.
+            
+             ### Ejemplo de uso:
+                 PUT /api/resource/68249ee31a7e2be077274172
+            ```json
+            {
+                 "Name": "Recurso 1",
+                 "Description": "---",
+                 "Value": "https://excalidraw.com/"
+            }
+            ```
+            </remarks>
+             <param name="id"></param>
+             <param name="resourceDto"></param>
+             <returns>Actualizar un recurso</returns>
+             <response code="200">Recurso actualizado correctamente</response>
+             <response code="400">Error en la solicitud</response>
+             <response code="404">Recurso no encontrado</response>
+        </member>
+        <member name="M:api.Controllers.ResourceController.UpdateResourcePartial(System.String,api.Infrastructure.Dto.UpdateResourceDto)">
+             <summary>Actualizar parcialmente un recurso</summary>
+             <remarks>
+             Actualizar un recurso parcialemente.
+             Actualiza parcialmente el contenido de un recurso dependiendo de los cambios que realizamos.
+            
+             ### Ejemplo de uso:
+                 PUT /api/resource/68249ee31a7e2be077274172
+            ```json
+            {
+                 "Name": "Recurso 1",
+            }
+            ```
+            </remarks>
+             <param name="id"></param>
+             <param name="resourceDto"></param>
+             <returns></returns>
+        </member>
+        <member name="M:api.Controllers.ResourceController.UpdateResourceFolderId(System.String,api.Infrastructure.Dto.UpdateFolderId)">
+             <summary>Actualizar el folderId de un recurso</summary>
+             <remarks>
+             Actualizar el folderId de un recurso.
+            
+             ### Ejemplo de uso:
+                 PUT /api/resource/folderid/68249ee31a7e2be077274172
+            ```json
+            {
+                 "FolderId": "681d0aa3f03a81ee9f9e53b6"
+            }
+            ```
+            </remarks>
+             <param name="id"></param>
+             <param name="resourceDto"></param>
+             <returns>Actualizar el folderId de un recurso</returns>
+             <response code="200">Recurso actualizado correctamente</response>
+             <response code="400">Error en la solicitud</response>
+             <response code="404">Recurso no encontrado</response>
+        </member>
+        <member name="M:api.Controllers.ResourceController.DeleteResource(System.String)">
+             <summary>Eliminar un recurso</summary>
+             <remarks>
+             Eliminar un recurso.
+            
+             ### Ejemplo de uso:
+                 DELETE /api/resource/68249ee31a7e2be077274172
+                 
+             </remarks>
+             <param name="id"></param>
+             <returns>Recurso eliminado</returns>
+             <response code="200">Recurso eliminado correctamente</response>
+             <response code="400">Error en la solicitud</response>
+             <response code="404">Recurso no encontrado</response>
+        </member>
+        <member name="M:api.Controllers.ResourceController.GetResourcesByName(System.String)">
+             <summary>Obtener recursos por sus nombres</summary>
+             <remarks>
+             Obtener recursos por sus nombres.
+            
+             ### Ejemplo de uso:
+                 GET /api/resource/name/Recurso
+            
+             ### Respuesta exitosa (200 OK):
+             ```json
+             [
+                 {
+                     "id": "68249ee31a7e2be077274172",
+                     "folderId": "681d0aa3f03a81ee9f9e53b6",
+                     "name": "Recurso 1",
+                     "description": "Recurso 1",
+                     "type": 0,
+                     "value": "https://excalidraw.com/",
+                     "favorite": true,
+                     "createdOn": "2025-05-14T13:47:15.483Z"
+                 }
+             ]
+             ```
+             </remarks>
+             <param name="name"></param>
+             <returns>Una lista de recursos</returns>
+             <response code="200">Lista de recursos obtenida correctamente</response>
+             <response code="400">Error en la solicitud</response>
+        </member>
+        <member name="M:api.Controllers.ResourceController.GetResourcesFavorites">
+             <summary>Obtener recursos favoritos</summary>
+             <remarks>
+             Obtener recursos favoritos.
+             
+             ### Ejemplo de uso:
+                 GET /api/resource/favorites
+            
+             ### Respuesta exitosa (200 OK):
+             ```json
+             [
+                 {
+                     "id": "68249ee31a7e2be077274172",
+                     "folderId": "681d0aa3f03a81ee9f9e53b6",
+                     "name": "Recurso 1",
+                     "description": "Recurso 1",
+                     "type": 0,
+                     "value": "https://excalidraw.com/",
+                     "favorite": true,
+                     "createdOn": "2025-05-14T13:47:15.483Z"
+                 }
+             ]
+             ```
+             </remarks>
+             <returns>Una lista de recursos favoritos</returns>
+             <response code="200">Lista de recursos favoritos obtenida correctamente</response>
+             <response code="400">Error en la solicitud</response>
+        </member>
+        <member name="M:api.Controllers.ResourceController.UpdateResourceFavorite(System.String)">
+             <summary>Actualizar el favorite de un recurso</summary>
+             <remarks>
+             Actualizar el favorite de un recurso.
+            
+             ### Ejemplo de uso:
+                 PUT /api/resource/favorite/68249ee31a7e2be077274172
+            
+             </remarks>
+             <param name="id"></param>
+             <returns>Recurso actualizado</returns>
+             <response code="200">Recurso actualizado correctamente</response>
+             <response code="400">Error en la solicitud</response>
+             <response code="404">Recurso no encontrado</response>
+        </member>
+        <member name="M:api.Controllers.ResourceController.GetResourcesByFolderId(System.String)">
+             <summary>Obtener recursos por su folderId</summary>
+             <remarks>
+             Obtener recursos por su folderId.
+            
+             ### Ejemplo de uso:
+                 GET /api/resource/folder/681d0aa3f03a81ee9f9e53b6
+            
+             ### Respuesta exitosa (200 OK):
+            ```json
+             [
+                 {
+                     "id": "68249ee31a7e2be077274172",
+                     "folderId": "681d0aa3f03a81ee9f9e53b6",
+                     "name": "Recurso 1",
+                     "description": "Recurso 1",
+                     "type": 0,
+                     "value": "https://excalidraw.com/",
+                     "favorite": true,
+                     "createdOn": "2025-05-14T13:47:15.483Z"
+                 }
+             ]
+             ```
+             </remarks>
+             <param name="folderId"></param>
+             <returns>Una lista de recursos</returns>
+             <response code="200">Lista de recursos obtenida correctamente</response>
+             <response code="400">Error en la solicitud</response>
+             <response code="404">Id no encontrada</response>
+        </member>
+        <member name="M:api.Controllers.ResourceController.GetRootResources">
+             <summary>Obtener recursos raices</summary>
+             <remarks>
+             Obtener recursos raices.
+            
+             ### Ejemplo de uso:
+                 GET /api/resource/root
+            
+             ### Respuesta exitosa (200 OK):
+             ```json
+             [
+                 {
+                     "id": "68249ee31a7e2be077274172",
+                     "folderId": null,
+                     "name": "Recurso 1",
+                     "description": "Recurso 1",
+                     "type": 0,
+                     "value": "https://excalidraw.com/",
+                     "favorite": true,
+                     "createdOn": "2025-05-14T13:47:15.483Z"
+                 }
+             ]
+             ```
+             </remarks>
+             <returns>Una lista de recursos</returns>
+             <response code="200">Lista de recursos obtenida correctamente</response>
+             <response code="400">Error en la solicitud</response>
+        </member>
+        <member name="M:api.Controllers.ResourceController.GetResourcesRecents">
+             <summary>Obtener recursos recientes</summary>
+             <remarks>
+             Obtener recursos recientes.
+            
+             ### Ejemplo de uso:
+                 GET /api/resource/recents
+            
+             ### Respuesta exitosa (200 OK):
+             ```json
+             [
+                 {
+                     "id": "68249ee31a7e2be077274172",
+                     "folderId": null,
+                     "name": "Recurso 1",
+                     "description": "Recurso 1",
+                     "type": 0,
+                     "value": "https://excalidraw.com/",
+                     "favorite": true,
+                     "createdOn": "2025-05-14T13:47:15.483Z"
+                 }
+             ]
+             ```
+             </remarks>
+             <returns>Una lista de recursos</returns>
+             <response code="200">Lista de recursos obtenida correctamente</response>
+             <response code="400">Error en la solicitud</response>
+        </member>
+        <member name="M:api.Controllers.ResourceController.DeleteResourcesByFolderId(System.String)">
+             <summary>Eliminar todos los recursos de un folder</summary>
+             <remarks>
+             Eliminar todos los recursos de un folder.
+            
+             ### Ejemplo de uso:
+                 DELETE /api/resource/folder/681d0aa3f03a81ee9f9e53b6
+            
+             </remarks>
+             <param name="folderId"></param>
+             <returns>Recurso eliminado</returns>
+             <response code="200">Recurso eliminado correctamente</response>
+             <response code="400">Error en la solicitud</response>
+             <response code="404">Id no encontrado</response>
+        </member>
+        <member name="T:api.Middleware.Utf8EncodingMiddleware">
+            <summary>
+            Middleware personalizado para asegurar el correcto manejo de caracteres especiales y encoding UTF-8.
+            Este middleware intercepta las peticiones HTTP entrantes y garantiza que el contenido JSON
+            se procese correctamente con codificación UTF-8, evitando problemas con caracteres especiales
+            como paréntesis, comillas, backticks, asteriscos, etc.
+            </summary>
+        </member>
+    </members>
+</doc>
